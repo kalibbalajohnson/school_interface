@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../../toast.css";
 
 function Toast({ message, color }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
     setIsVisible(true);
-    setTimeout(() => {
+    setOpacity(1);
+    const timeout = setTimeout(() => {
       setIsVisible(false);
-    }, 30 * 60 * 1000); // 30 minutes in milliseconds
+      setOpacity(0);
+    }, 30000); // 30 seconds in milliseconds
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
@@ -16,7 +22,7 @@ function Toast({ message, color }) {
       {isVisible && (
         <div
           className={`toast ${isVisible ? "show" : ""}`}
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: color, opacity: opacity }}
         >
           {message && <p>{message}</p>}
         </div>

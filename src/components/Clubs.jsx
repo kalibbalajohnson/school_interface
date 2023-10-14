@@ -51,7 +51,9 @@ function Clubs() {
               <td>{item.clubName}</td>
               <td>{item.headOfClub}</td>
               <td>
-                <button className="edit">Edit</button>
+                <Link to={`/clubs/${item._id}`}>
+                  <button>Edit</button>
+                </Link>
               </td>
               <td>
                 <button className="delete" onClick={() => deleteClub(item._id)}>
