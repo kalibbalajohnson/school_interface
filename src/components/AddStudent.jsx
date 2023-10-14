@@ -38,7 +38,7 @@ function Student() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data); // Handle the response data here
+                console.log(data);
                 resetForm();
 
             })

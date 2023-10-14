@@ -20,7 +20,7 @@ function StudentTable() {
 
     //------------- GET BY ID ---------------
     useEffect(() => {
-        // If there's no search query, do not fetch any data
+        // If there's no search query, no data fetched
         if (!searchQuery) {
             setSearchResults([]); // Clear search results when search query is empty
             return;
